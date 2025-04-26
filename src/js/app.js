@@ -1,3 +1,4 @@
+import { variationPlacements } from "@popperjs/core";
 import "../style/index.css";
 
 /**
@@ -29,13 +30,25 @@ function render(variables = {}) {
   let cover = `<div class="cover"><img src="${variables.background}" /></div>`;
   if (variables.includeCover == false) cover = "<div class='cover'></div>";
 
+  // Definición de variables de Datos Personales
+  const name = variables.name ? variables.name : "Put your name";
+  const lastName = variables.lastName
+    ? variables.lastName
+    : "-Put your Lastname";
+  const fullname = `${name} ${lastName}`.trim();
+  const role = variables.role ? variables.role : "";
+  const city = variables.city ? variables.city : "";
+  const country = variables.country ? variables.country : "";
+
+  // Definición de variables de Redes Sociales
+
   // reset the website body with the new html output
   document.querySelector("#widget_content").innerHTML = `<div class="widget">
             ${cover}
           <img src="${variables.avatarURL}" class="photo" />
-          <h1>Lucy Boilett</h1>
-          <h2>Web Developer</h2>
-          <h3>Miami, USA</h3>
+          <h1>${fullname}</h1>
+          <h2>${role}</h2>
+          <h3>${city}${city && country ? ", " : ""}${country}</h3>
           <ul class="position-right">
             <li><a href="https://twitter.com/4geeksacademy"><i class="fab fa-twitter"></i></a></li>
             <li><a href="https://github.com/4geeksacademy"><i class="fab fa-github"></i></a></li>
